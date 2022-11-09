@@ -1,0 +1,33 @@
+name: run
+
+# Controls when the workflow will run
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Name of the cluster/environment to run'
+        required: true
+        default: 'cnative'
+    push:
+      branches:
+        - 'main'
+      tags:
+        - '*.*.*'
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    env:
+      GOOGLE_CLOUD_CREDENTIALS: ${{ secrets.GOOGLE_CLOUD_CREDENTIALS }}
+      GCLOUD_PROJECT: ${{ secrets.GCLOUD_PROJECT }}
+      CLUSTER_NAME: ${{ github.event.inputs.environment }}
+    environment:
+      name: ${{ github.event.inputs.environment }}
+      url: https://coder.${{ github.event.inputs.environment }}.gke.isium.de
+    steps:
+      - name: credentials
+        run: "mkdir -p config && echo ${GOOGLE_CLOUD_CREDENTIALS} > config/google-cloud.json"
+        shell: bash
+      - name: run
+        run: "docker run -v $(pwd)/config:/app/config isi006/coder-development-cluster:latest ${GCLOUD_PROJECT} ${CLUSTER_NAME}"
+        shell: bash
