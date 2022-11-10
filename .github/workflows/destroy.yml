@@ -7,7 +7,7 @@ on:
       environment:
         description: 'Name of the cluster/environment to destroy'
         required: true
-        default: 'cnative'
+        default: 'dev'
       uninstall_apps:
         description: 'Uninstall the applications before destroying the cluster'
         type: choice

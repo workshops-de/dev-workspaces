@@ -7,7 +7,7 @@ on:
       environment:
         description: 'Name of the cluster/environment to run'
         required: true
-        default: 'cnative'
+        default: 'dev'
     push:
       branches:
         - 'main'
