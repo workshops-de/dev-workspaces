@@ -42,12 +42,6 @@ jobs:
     environment:
       name: ${{ github.event.inputs.environment }}
     steps:
-      - name: check
-        run: |
-          if [ "${REMOVE_BACKUPS}" == "" ]; then
-            echo "REMOVE_BACKUPS is not set, please make a decision what to do with the backups."
-            exit 1
-          fi
       - name: credentials
         run: "mkdir -p config && echo ${GOOGLE_CLOUD_CREDENTIALS} > config/google-cloud.json"
         shell: bash
