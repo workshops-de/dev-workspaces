@@ -20,6 +20,7 @@ on:
         description: 'Remove all home dir and DB backups from the bucket to get a clean system on the next start'
         type: choice
         options:
+          - ""
           - "true"
           - "false"
         required: true
@@ -41,6 +42,12 @@ jobs:
     environment:
       name: ${{ github.event.inputs.environment }}
     steps:
+      - name: check
+        run: |
+          if [ "${REMOVE_BACKUPS}" == "" ]; then
+            echo "REMOVE_BACKUPS is not set, please make a decision what to do with the backups."
+            exit 1
+          fi
       - name: credentials
         run: "mkdir -p config && echo ${GOOGLE_CLOUD_CREDENTIALS} > config/google-cloud.json"
         shell: bash
