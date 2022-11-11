@@ -40,7 +40,7 @@ The first use case at workshops.de is the Docker/Kubernetes workshop.
 
 - We have cluster autoscaling enabled, so the cluster will scale up and down automatically. The developer environments will switched off automatically after a configured time (`max_ttl`) if the are idle (not working yet but with the next release of coder: https://github.com/coder/coder/pull/4843). They can be restarted by the user at anytime. But it is a good practice to encourage the user to keep their environments stopped if they are not needed.
 
-- Every system- und user data is backuped continiuesly. The backups are stored in a Google Cloud Storage Bucket. The backups are encrypted with end-to-end encryption. The data will be automaticly restored on cluster recreation. Currently we have to manually delete the data for a workspace to get a completely new environment, this will be automated soon.
+- Every system- und user data is backuped continiuesly. The backups are stored in a Google Cloud Storage Bucket and are end-to-end encrypted. The data will be automaticly restored on cluster recreation.
 
 ## How it works
 
