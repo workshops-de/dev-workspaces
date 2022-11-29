@@ -28,5 +28,5 @@ jobs:
         run: "mkdir -p config && echo ${GOOGLE_CLOUD_CREDENTIALS} > config/google-cloud.json"
         shell: bash
       - name: run
-        run: "docker run -v $(pwd)/config:/app/config isi006/coder-development-cluster:latest ${GCLOUD_PROJECT} ${CLUSTER_NAME}"
+        run: "./run_container.sh run_create ${GCLOUD_PROJECT} ${CLUSTER_NAME}"
         shell: bash
