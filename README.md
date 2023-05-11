@@ -34,16 +34,16 @@ The first use case at workshops.de is the Docker/Kubernetes workshop.
 
   This is the location where users kann manage their account. They can change or recover their password add second factor authentication etc.
 
-- https://grafana.`cluster_name`.spaces.workshops.de - System monitoring ( *admin* / `grafana_password` )
+- https://grafana.`cluster_name`.spaces.workshops.de - System monitoring ( *admin* / `grafana_password` or OpenID Connect)
 
 ## Other Facts
 
-- We have cluster autoscaling enabled, so the cluster will scale up and down automatically. The developer environments will stopped automatically after a configured time (`max_ttl`) if the are idle. They can be restarted by the user at anytime. But it is a good practice to encourage the user to keep their environments stopped if they are not needed to reduce cloud costs.
+- We have cluster autoscaling enabled, so the cluster will scale up and down automatically. The developer environments will stopped automatically after a configured time (`max_ttl`) if the are idle. They can be restarted by the user at anytime. But it is a good practice to encourage the users to keep their environments stopped if they are not needed to reduce cloud costs.
 
 - Every system- und user data is backuped continiuesly. The backups are stored in a Google Cloud Storage Bucket and are end-to-end encrypted. The data will be automaticly restored on cluster recreation.
 
 ## How it works
 
-Technically everythings is running in containers orchestrated by Kubernetes in the Google cloud.
+Technically everything is running in containers orchestrated by Kubernetes in the Google cloud.
 
 Visit this page for more technical details: https://github.com/klauserber/coder-development-cluster
