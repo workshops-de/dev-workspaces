@@ -46,7 +46,7 @@ jobs:
     steps:
       - name: credentials
         run: >
-          mkdir -p config &&
+          mkdir -p config_default &&
           echo ${GOOGLE_CODER_AUTOMATION} > config_default/google-coder-automation.json &&
           echo ${GOOGLE_CODER_DNS} > config_default/google-coder-dns.json &&
           echo ${GOOGLE_CODER_STORAGE} > config_default/google-coder-storage.json
